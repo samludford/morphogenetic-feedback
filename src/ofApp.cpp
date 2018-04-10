@@ -1,10 +1,12 @@
 #include "ofApp.h"
+#include "ofxPS3EyeGrabber.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 	ofBackground(125);
-	video.setDeviceID(0);
+//    video.setDeviceID(0);
     video.setDesiredFrameRate(60);
+    video.setGrabber(std::make_shared<ofxPS3EyeGrabber>());
     video.initGrabber(640, 480);
     debug = true;
 }
