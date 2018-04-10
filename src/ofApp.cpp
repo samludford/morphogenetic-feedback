@@ -9,10 +9,73 @@ void ofApp::setup(){
     video.setGrabber(std::make_shared<ofxPS3EyeGrabber>());
     video.initGrabber(640, 480);
     debug = true;
+    
+    ard.connect("/dev/tty.usbmodem1421", 57600);
+    ofAddListener(ard.EInitialized, this, &ofApp::setupArduino);
+    bSetupArduino    = false;
+}
+
+// Arduino
+void ofApp::setupArduino(const int & version) {
+    
+    // remove listener because we don't need it anymore
+    ofRemoveListener(ard.EInitialized, this, &ofApp::setupArduino);
+    
+    // it is now safe to send commands to the Arduino
+    bSetupArduino = true;
+    
+    // print firmware name and version to the console
+    ofLogNotice() << ard.getFirmwareName();
+    ofLogNotice() << "firmata v" << ard.getMajorFirmwareVersion() << "." << ard.getMinorFirmwareVersion();
+    
+    // Note: pins A0 - A5 can be used as digital input and output.
+    // Refer to them as pins 14 - 19 if using StandardFirmata from Arduino 1.0.
+    // If using Arduino 0022 or older, then use 16 - 21.
+    // Firmata pin numbering changed in version 2.3 (which is included in Arduino 1.0)
+    
+    // set pin D3 as digital output
+    ard.sendDigitalPinMode(3, ARD_OUTPUT);
+    
+    
+    // Listen for changes on the digital and analog pins
+    ofAddListener(ard.EDigitalPinChanged, this, &ofApp::digitalPinChanged);
+    ofAddListener(ard.EAnalogPinChanged, this, &ofApp::analogPinChanged);
+}
+
+//--------------------------------------------------------------
+void ofApp::updateArduino(){
+    
+    // update the arduino, get any data or messages.
+    // the call to ard.update() is required
+    ard.update();
+    
+    // do not send anything until the arduino has been set up
+    if (bSetupArduino) {
+        // fade the led connected to pin D11
+        
+        // switch motor on / off every 120 seconds
+        int frame = ofGetFrameNum();
+        if(frame % 120 == 0) {
+            motorState = !motorState;
+            int value = motorState ? ARD_HIGH : ARD_LOW;
+            ard.sendDigital(3, value);
+        }
+        
+    }
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::digitalPinChanged(const int & pinNum) {
+}
+
+//--------------------------------------------------------------
+void ofApp::analogPinChanged(const int & pinNum) {
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
 	video.update();		//Decode the new frame if needed
 	//Do computing only if the new frame was obtained
 	if ( video.isFrameNew() ) {
@@ -54,6 +117,8 @@ void ofApp::update(){
 			}
 		}
 	}
+    
+    updateArduino();
 }
 
 //--------------------------------------------------------------

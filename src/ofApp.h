@@ -2,6 +2,7 @@
 #include "ofMain.h"
 #include "ofxOpenCv.h"
 
+
 class ofApp : public ofBaseApp{
 
 public:
@@ -17,8 +18,19 @@ public:
 	ofxCvGrayscaleImage diff;		//Absolute difference of the frames
 	ofxCvFloatImage diffFloat;		//Amplified difference images
 	ofxCvFloatImage bufferFloat;	//Buffer image
+    
+    
+    // arduino
+    ofArduino ard;
+    bool bSetupArduino;
+    void setupArduino(const int & version);
+    void updateArduino();
+    void digitalPinChanged(const int & pinNum);
+    void analogPinChanged(const int & pinNum);
+    bool motorState;
 
     void mousePressed(int x, int y, int button);
     bool debug;
+    
 };
 
