@@ -1,12 +1,10 @@
 #pragma once
+
 #include "ofMain.h"
-//#include "ofxOpenCv.h"
 #include "ofxMaxim.h"
 #include "MagnetManager.h"
 #include "OpticalFlowManager.h"
-
-//using namespace cv;
-
+#include "HUD.h"
 
 class ofApp : public ofBaseApp {
 
@@ -20,14 +18,17 @@ public:
     
     // ofxMaxim
     void audioOut(float * output, int bufferSize, int nChannels);
-    int        bufferSize; /* buffer size */
-    int        sampleRate;
+    int  bufferSize;
+    int  sampleRate;
     
     // magnet manager
     MagnetManager *magnetManager;
     
     // optical flow analysis
     OpticalFlowManager *opticalFlowManager;
+    
+    // HUD
+    HUD *hud;
     
 };
 

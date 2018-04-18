@@ -66,12 +66,31 @@ void OpticalFlowManager::analyseVectors() {
         ofSetColor( 0, 0, 255 );
         for (int y=0; y<h; y+=5) {
             for (int x=0; x<w; x+=5) {
+                
+                motion = 0;
+                leftMotion = 0;
+                rightMotion = 0;
+                upMotion = 0;
+                downMotion = 0;
+                
                 float fx = flowXPixels[ x + w * y ];
                 float fy = flowYPixels[ x + w * y ];
-                //Draw only long vectors
-                if ( fabs( fx ) + fabs( fy ) > 1 ) {
-                    // it's long
+                
+                motion += fabs( fx ) + fabs( fy );
+                if(fx > 0) {
+                    rightMotion += fabs( fx );
+                } else {
+                    leftMotion += fabs ( fx );
                 }
+                
+                if(fy > 0) {
+                    downMotion += fabs( fy );
+                } else {
+                    upMotion += fabs ( fy );
+                }
+                
+//                cout << "total: " << motion << " l: " << leftMotion << " r: " << rightMotion << " u: " << upMotion << " d: " << downMotion << endl;
+
             }
         }
 }

@@ -17,6 +17,11 @@ public:
     
     OpticalFlowManager();
     void calculate(ofPixels & pixels);
+    float motion;
+    float leftMotion;
+    float rightMotion;
+    float upMotion;
+    float downMotion;
     
 protected:
     

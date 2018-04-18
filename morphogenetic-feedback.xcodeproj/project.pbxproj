@@ -16,7 +16,9 @@
 		21A059755481CC0BF969FD2D /* keep_alive.c in Sources */ = {isa = PBXBuildFile; fileRef = A3528DDFF05B00283552455D /* keep_alive.c */; };
 		22ACEC4220874C6400C54818 /* MagnetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22ACEC4020874C6400C54818 /* MagnetManager.cpp */; };
 		22ACEC452087591700C54818 /* OpticalFlowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22ACEC432087591700C54818 /* OpticalFlowManager.cpp */; };
+		22ACEC4820878E1300C54818 /* HUDComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22ACEC4620878E1300C54818 /* HUDComponent.cpp */; };
 		22F21CE3B902225374BA1CA2 /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D3A0051CCB2C0F0ECA139E /* maximilian.cpp */; };
+		22FFA4E92087932900021F10 /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA4E72087932900021F10 /* HUD.cpp */; };
 		250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7160245B19131DAE6128 /* ofxCvColorImage.cpp */; };
 		255A7B680DC81E543C875794 /* usb_libusb10.c in Sources */ = {isa = PBXBuildFile; fileRef = 28F9707464BA3FF98E05096C /* usb_libusb10.c */; };
 		49BEEB2DFA5319D55AA6899F /* tilt.c in Sources */ = {isa = PBXBuildFile; fileRef = BF2F2AA872288D30F53983EF /* tilt.c */; };
@@ -105,6 +107,10 @@
 		22ACEC4120874C6400C54818 /* MagnetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MagnetManager.h; sourceTree = "<group>"; };
 		22ACEC432087591700C54818 /* OpticalFlowManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OpticalFlowManager.cpp; sourceTree = "<group>"; };
 		22ACEC442087591700C54818 /* OpticalFlowManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpticalFlowManager.h; sourceTree = "<group>"; };
+		22ACEC4620878E1300C54818 /* HUDComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUDComponent.cpp; sourceTree = "<group>"; };
+		22ACEC4720878E1300C54818 /* HUDComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDComponent.h; sourceTree = "<group>"; };
+		22FFA4E72087932900021F10 /* HUD.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
+		22FFA4E82087932900021F10 /* HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
 		2411F6B35DAAAE5083D51167 /* motion_estimators.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = motion_estimators.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/stitching/detail/motion_estimators.hpp; sourceTree = SOURCE_ROOT; };
 		241AAF7769D555E4ECD57E17 /* cameras.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = cameras.h; path = ../../../addons/ofxKinect/libs/libfreenect/src/cameras.h; sourceTree = SOURCE_ROOT; };
 		26E4EEE253C8A6EFC3B3A639 /* warpers.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = warpers.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/stitching/detail/warpers.hpp; sourceTree = SOURCE_ROOT; };
@@ -901,6 +907,10 @@
 				22ACEC4120874C6400C54818 /* MagnetManager.h */,
 				22ACEC432087591700C54818 /* OpticalFlowManager.cpp */,
 				22ACEC442087591700C54818 /* OpticalFlowManager.h */,
+				22ACEC4620878E1300C54818 /* HUDComponent.cpp */,
+				22ACEC4720878E1300C54818 /* HUDComponent.h */,
+				22FFA4E72087932900021F10 /* HUD.cpp */,
+				22FFA4E82087932900021F10 /* HUD.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1073,6 +1083,7 @@
 				21A059755481CC0BF969FD2D /* keep_alive.c in Sources */,
 				FCC16AB16073FF0581F50ED7 /* loader.c in Sources */,
 				D31F5C1B140C59B2AF1533A8 /* registration.c in Sources */,
+				22ACEC4820878E1300C54818 /* HUDComponent.cpp in Sources */,
 				49BEEB2DFA5319D55AA6899F /* tilt.c in Sources */,
 				255A7B680DC81E543C875794 /* usb_libusb10.c in Sources */,
 				22ACEC452087591700C54818 /* OpticalFlowManager.cpp in Sources */,
@@ -1085,6 +1096,7 @@
 				22F21CE3B902225374BA1CA2 /* maximilian.cpp in Sources */,
 				9514C2D90467055B1447D074 /* stb_vorbis.c in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
+				22FFA4E92087932900021F10 /* HUD.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,

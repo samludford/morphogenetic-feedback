@@ -11,15 +11,21 @@ void ofApp::setup(){
     video.setGrabber(std::make_shared<ofxPS3EyeGrabber>());
     video.initGrabber(480, 480);
     
-    // ofxMaxim setup
+    // ofxMaxim setup (used in MagnetManager for clocking)
     sampleRate = 44100;
     bufferSize = 512;
     ofxMaxiSettings::setup(sampleRate, 2, bufferSize);
     ofSoundStreamSetup(2,2,this, sampleRate, bufferSize, 4);
     
-    // setup input and output managers
-    magnetManager = new MagnetManager();
+    // setup input manager
     opticalFlowManager = new OpticalFlowManager();
+    
+    // setup output manager
+    magnetManager = new MagnetManager();
+    
+    // setup hud
+    hud = new HUD();
+    
 }
 
 
@@ -39,9 +45,19 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
     ofBackground(255);
     ofSetColor(255);
-    video.draw(0, 0);
+    video.draw(0,0);
+    
+    float values[] = {  opticalFlowManager->motion,
+                        opticalFlowManager->leftMotion,
+                        opticalFlowManager->rightMotion,
+                        opticalFlowManager->upMotion,
+                        opticalFlowManager->downMotion
+    };
+        
+    hud->draw(values);
 }
 
 //--------------------------------------------------------------
