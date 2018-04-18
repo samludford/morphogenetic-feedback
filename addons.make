@@ -1,3 +1,4 @@
 ofxKinect
+ofxMaxim
 ofxOpenCv
 ofxPS3EyeGrabber
