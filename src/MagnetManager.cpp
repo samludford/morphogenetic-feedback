@@ -16,28 +16,34 @@ MagnetManager::MagnetManager() {
     ofAddListener(ard.EInitialized, this, &MagnetManager::setupArduino);
     bSetupArduino    = false;
     
-    // clock
-    clock.setTempo(30.0);
-    clock.setTicksPerBeat(2);
+    for(int i=0 ; i < NUM_MAGNETS ; i++) {
+        magnetPins[i] = i + 4;
+        clocks[i].setTempo(60.0 + i);
+        clocks[i].setTicksPerBeat(4);
+        counters[i] = 0;
+    }
+    
 }
 
 //--------------------------------------------------------------
 void MagnetManager::audioLoop() {
-    clock.ticker();
-    if(clock.tick) {
-        
-        // don't do anything until arduino setup complete
-        if( !bSetupArduino ) return;
-        
-        int c = counter % 2;
-        int value = c==0 ? ARD_HIGH : ARD_LOW;
-        ard.sendDigital(magnet1Pin, value);
-        ard.sendDigital(magnet2Pin, value);
-        ard.sendDigital(magnet3Pin, value);
-        ard.sendDigital(magnet4Pin, value);
-        
-        counter++;
+    
+    // don't do anything until arduino setup complete
+    if( !bSetupArduino ) return;
+    
+    for(int i=0 ; i < NUM_MAGNETS ; i++) {
+        clocks[i].ticker();
+        if(clocks[i].tick) {
+            int c = counters[i] % 4;
+            if(c==0){
+                ard.sendDigital(magnetPins[i], ARD_HIGH);
+            } else if(c==1) {
+                ard.sendDigital(magnetPins[i], ARD_LOW);
+            }
+            counters[i]++;
+        }
     }
+    
 }
 
 //--------------------------------------------------------------
@@ -59,10 +65,9 @@ void MagnetManager::setupArduino(const int & version) {
     ofLogNotice() << "firmata v" << ard.getMajorFirmwareVersion() << "." << ard.getMinorFirmwareVersion();
     
     // set magnet pins as outputs
-    ard.sendDigitalPinMode(magnet1Pin, ARD_OUTPUT);
-    ard.sendDigitalPinMode(magnet2Pin, ARD_OUTPUT);
-    ard.sendDigitalPinMode(magnet3Pin, ARD_OUTPUT);
-    ard.sendDigitalPinMode(magnet4Pin, ARD_OUTPUT);
+    for(int i=0 ; i < NUM_MAGNETS ; i++) {
+        ard.sendDigitalPinMode(magnetPins[i], ARD_OUTPUT);
+    }
 }
 
 //--------------------------------------------------------------

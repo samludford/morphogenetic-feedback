@@ -9,8 +9,8 @@
 #include "ofMain.h"
 #include "ofxMaxim.h"
 
-//#define ARDUINO_UNO_TTY "/dev/tty.usbmodem1411"
 #define ARDUINO_UNO_TTY "tty.usbmodem1411"
+#define NUM_MAGNETS 4
 
 class MagnetManager {
     
@@ -28,18 +28,8 @@ protected:
     void setupArduino(const int & version);
     bool motorState;
     
-    const int magnet1Pin {4};
-    const int magnet2Pin {5};
-    const int magnet3Pin {6};
-    const int magnet4Pin {7};
-    
-    bool magnet1State {false};
-    bool magnet2State {false};
-    bool magnet3State {false};
-    bool magnet4State {false};
-    
-    // Maximilian
-    maxiClock clock;
-    int counter;
+    int magnetPins[NUM_MAGNETS];
+    maxiClock clocks[NUM_MAGNETS];
+    int counters[NUM_MAGNETS];
     
 };
