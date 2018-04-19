@@ -7,11 +7,12 @@
 
 #include "HUDBar.h"
 
+//--------------------------------------------------------------
 HUDBar::HUDBar(float _x, float _y, float _width, float _height, int _value) : HUDComponent(_x, _y, _width, _height) {
     value = _value;
 }
 
-// override
+//--------------------------------------------------------------
 void HUDBar::drawHUD(float values[]) {
     // draw rectangle
     ofSetColor(SHADE_TOP);

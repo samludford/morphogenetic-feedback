@@ -5,6 +5,7 @@
 #include "MagnetManager.h"
 #include "OpticalFlowManager.h"
 #include "HUD.h"
+#include "ofxOpenCv.h"
 
 class ofApp : public ofBaseApp {
 
@@ -15,6 +16,8 @@ public:
     
     // video input
     ofVideoGrabber video;
+    
+    // video processing
     
     // ofxMaxim
     void audioOut(float * output, int bufferSize, int nChannels);
@@ -29,6 +32,10 @@ public:
     
     // HUD
     HUD *hud;
+    
+    // image for display
+    ofxCvColorImage image;        //The current video frame
+    ofxCvGrayscaleImage grayImage, grayImagePrev;
     
 };
 

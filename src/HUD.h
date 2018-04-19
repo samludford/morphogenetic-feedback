@@ -11,6 +11,7 @@
 #include "HUDComponent.h"
 #include "HUDBar.h"
 #include "HUDGraph.h"
+#include "HUDWheel.h"
 
 class HUD {
     

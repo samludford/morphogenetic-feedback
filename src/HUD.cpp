@@ -9,24 +9,39 @@
 
 //--------------------------------------------------------------
 HUD::HUD() {
+    
     // setup HUD
-    HUDBar *motionBar = new HUDBar(10, 10, 80, 300, 0);
+    float panelOffset = ofGetWidth() / 3.0;
+    float spacing = 10.0;
+    float panelWidth = ofGetWidth() / 3.0;
+    float panelHeight = ofGetHeight() / 2.0;
+    float componentHeight = panelHeight - 2.0 * spacing;
+    float barWidth = (panelWidth - 6.0 * spacing) * 0.2;
+    float graphWidth = panelWidth - 2.0 * spacing;
+    float barY = spacing;
+    
+    HUDBar *motionBar = new HUDBar(spacing + panelOffset, barY, barWidth, componentHeight, 0);
     components.push_back(motionBar);
     
-    HUDBar *leftMotionBar = new HUDBar(100, 10, 80, 300, 1);
+    HUDBar *leftMotionBar = new HUDBar(spacing*2.0 + barWidth + panelOffset, barY, barWidth, componentHeight, 1);
     components.push_back(leftMotionBar);
-    
-    HUDBar *rightMotionBar = new HUDBar(200, 10, 80, 300, 2);
+
+    HUDBar *rightMotionBar = new HUDBar(spacing*3.0 + barWidth*2.0 + panelOffset, barY, barWidth, componentHeight, 2);
     components.push_back(rightMotionBar);
-    
-    HUDBar *upMotionBar = new HUDBar(300, 10, 80, 300, 3);
+
+    HUDBar *upMotionBar = new HUDBar(spacing*4.0 + barWidth*3.0 + panelOffset, barY, barWidth, componentHeight, 3);
     components.push_back(upMotionBar);
-    
-    HUDBar *downMotionBar = new HUDBar(400, 10, 80, 300, 4);
+
+    HUDBar *downMotionBar = new HUDBar(spacing*5.0 + barWidth*4.0 + panelOffset, barY, barWidth, componentHeight, 4);
     components.push_back(downMotionBar);
     
-    HUDGraph *graph = new HUDGraph(10, 320, 480, 300);
+    HUDGraph *graph = new HUDGraph(spacing + panelOffset, panelHeight + spacing, graphWidth, componentHeight);
     components.push_back(graph);
+    
+    float wheelXOffset = panelWidth * 2.0 + spacing;
+    
+    HUDWheel *wheel = new HUDWheel(wheelXOffset, spacing, panelWidth - spacing*2.0, ofGetHeight() - spacing * 2.0);
+    components.push_back(wheel);
 }
 
 //--------------------------------------------------------------

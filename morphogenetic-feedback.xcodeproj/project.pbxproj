@@ -21,6 +21,7 @@
 		22FFA4E92087932900021F10 /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA4E72087932900021F10 /* HUD.cpp */; };
 		22FFA4EC2088BA6D00021F10 /* HUDBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA4EA2088BA6D00021F10 /* HUDBar.cpp */; };
 		22FFA4EF2088C91600021F10 /* HUDGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA4ED2088C91600021F10 /* HUDGraph.cpp */; };
+		22FFA4F22088D2FD00021F10 /* HUDWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA4F02088D2FD00021F10 /* HUDWheel.cpp */; };
 		250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7160245B19131DAE6128 /* ofxCvColorImage.cpp */; };
 		255A7B680DC81E543C875794 /* usb_libusb10.c in Sources */ = {isa = PBXBuildFile; fileRef = 28F9707464BA3FF98E05096C /* usb_libusb10.c */; };
 		49BEEB2DFA5319D55AA6899F /* tilt.c in Sources */ = {isa = PBXBuildFile; fileRef = BF2F2AA872288D30F53983EF /* tilt.c */; };
@@ -117,6 +118,8 @@
 		22FFA4EB2088BA6D00021F10 /* HUDBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDBar.h; sourceTree = "<group>"; };
 		22FFA4ED2088C91600021F10 /* HUDGraph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUDGraph.cpp; sourceTree = "<group>"; };
 		22FFA4EE2088C91600021F10 /* HUDGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDGraph.h; sourceTree = "<group>"; };
+		22FFA4F02088D2FD00021F10 /* HUDWheel.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUDWheel.cpp; sourceTree = "<group>"; };
+		22FFA4F12088D2FD00021F10 /* HUDWheel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDWheel.h; sourceTree = "<group>"; };
 		2411F6B35DAAAE5083D51167 /* motion_estimators.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = motion_estimators.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/stitching/detail/motion_estimators.hpp; sourceTree = SOURCE_ROOT; };
 		241AAF7769D555E4ECD57E17 /* cameras.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = cameras.h; path = ../../../addons/ofxKinect/libs/libfreenect/src/cameras.h; sourceTree = SOURCE_ROOT; };
 		26E4EEE253C8A6EFC3B3A639 /* warpers.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = warpers.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/stitching/detail/warpers.hpp; sourceTree = SOURCE_ROOT; };
@@ -921,6 +924,8 @@
 				22FFA4EB2088BA6D00021F10 /* HUDBar.h */,
 				22FFA4ED2088C91600021F10 /* HUDGraph.cpp */,
 				22FFA4EE2088C91600021F10 /* HUDGraph.h */,
+				22FFA4F02088D2FD00021F10 /* HUDWheel.cpp */,
+				22FFA4F12088D2FD00021F10 /* HUDWheel.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1109,6 +1114,7 @@
 				9514C2D90467055B1447D074 /* stb_vorbis.c in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
 				22FFA4E92087932900021F10 /* HUD.cpp in Sources */,
+				22FFA4F22088D2FD00021F10 /* HUDWheel.cpp in Sources */,
 				1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */,
 				169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */,
 				FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */,

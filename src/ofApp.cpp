@@ -26,6 +26,8 @@ void ofApp::setup(){
     // setup hud
     hud = new HUD();
     
+    ofSetCircleResolution(100);
+    
 }
 
 
@@ -48,16 +50,19 @@ void ofApp::draw(){
     
     ofBackground(0);
     ofSetColor(255);
-//    video.draw(0,0);
     
     float values[] = {  opticalFlowManager->motion,
                         opticalFlowManager->leftMotion,
                         opticalFlowManager->rightMotion,
                         opticalFlowManager->upMotion,
-                        opticalFlowManager->downMotion
-    };
+                        opticalFlowManager->downMotion };
         
     hud->draw(values);
+    
+    if(opticalFlowManager->bufferFloat.bAllocated) {
+        opticalFlowManager->bufferFloat.draw( 10, 10, 380, 380 );
+    }
+    
 }
 
 //--------------------------------------------------------------

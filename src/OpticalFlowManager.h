@@ -23,6 +23,8 @@ public:
     float rightMotion;
     float upMotion;
     float downMotion;
+    ofxCvFloatImage diffFloat;  //Amplified difference images
+    ofxCvFloatImage bufferFloat;    //Buffer image
     
 protected:
     
@@ -30,8 +32,12 @@ protected:
     ofxCvColorImage currentColor;        //First and second original images
     ofxCvGrayscaleImage gray1, gray2;    //Decimated grayscaled images
     ofxCvFloatImage flowX, flowY;        //Resulted optical flow in x and y axes
+    
+    ofxCvGrayscaleImage diff;        //Absolute difference of the frames
+    
     void computeVectors(ofPixels & pixels);
     void analyseVectors();
+    void processForDisplay();
     
 };
 

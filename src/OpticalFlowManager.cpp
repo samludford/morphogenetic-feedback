@@ -17,6 +17,7 @@ OpticalFlowManager::OpticalFlowManager() {
 void OpticalFlowManager::calculate(ofPixels & pixels) {
     computeVectors(pixels);
     analyseVectors();
+    processForDisplay();
 }
 
 //--------------------------------------------------------------
@@ -36,6 +37,8 @@ void OpticalFlowManager::computeVectors(ofPixels & pixels) {
     gray1 = imageDecimated1;
     
     if ( gray2.bAllocated ) {
+        
+        // optical flow stuff
         Mat img1( gray1.getCvImage() );  //Create OpenCV images
         Mat img2( gray2.getCvImage() );
         Mat flow;                        //Image for flow
@@ -93,4 +96,27 @@ void OpticalFlowManager::analyseVectors() {
 
             }
         }
+}
+
+//--------------------------------------------------------------
+void OpticalFlowManager::processForDisplay() {
+    if ( gray2.bAllocated ) {
+        // frame differing for display
+        diff.absDiff( gray1, gray2 );
+        diffFloat = diff;    //Convert to float image
+        diffFloat *= 5.0;    //Amplify the pixel values (original = 5.0)
+        if ( !bufferFloat.bAllocated ) {
+            //If the buffer is not initialized, then
+            //just set it equal to diffFloat
+            bufferFloat = diffFloat;
+        }
+        else {
+            //Slow damping the buffer to zero
+            bufferFloat *= 0.65; //original = 0.85
+            //Add current difference image to the buffer
+            
+            bufferFloat += diffFloat;
+            bufferFloat.erode(); //helps get rid of noise (remove if not needed)
+        }
+    }
 }
