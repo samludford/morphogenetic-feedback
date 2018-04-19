@@ -8,6 +8,7 @@
 #pragma once
 
 #include "HUDComponent.h"
+#include "ofMain.h"
 
 class HUDWheel : public HUDComponent {
     
@@ -22,6 +23,7 @@ protected:
     void drawSegment(ofPoint loc, ofColor col, float radius, float thickness, float startAngle, float endAngle);
     void drawDotted(ofPoint loc, float dots, float radius, float thickness);
     void drawIris(ofPoint loc, float radius, float thickness);
+    deque<float> motionVals;
     
     
     

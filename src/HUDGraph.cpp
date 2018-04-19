@@ -31,7 +31,7 @@ void HUDGraph::drawHUD(float values[]) {
         float delta_x = width / (float) (buffer_size-1);
         for(int j = 0 ; j < valueHistory[i].size() ; j++) {
             float x = j * delta_x;
-            float y = ofMap(valueHistory[i][j], 0 , 40, height-20, 0);
+            float y = ofMap(valueHistory[i][j], 0 , 40, height-20, 0, height-40);
             if(j==0) {
                 graphLine.curveTo(x, y);
             }
@@ -42,7 +42,6 @@ void HUDGraph::drawHUD(float values[]) {
         }
         graphLine.draw();
     }
-    
 
 }
 

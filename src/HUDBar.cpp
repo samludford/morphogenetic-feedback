@@ -19,7 +19,7 @@ void HUDBar::drawHUD(float values[]) {
     int v = values[value];
     ofNoFill();
     ofDrawRectRounded(0, 0, width, height, 3.0);
-    float vNorm = ofMap(v, 0, 40, 0, 1);
+    float vNorm = ofMap(v, 0, 40, 0, 1, 1);
     ofFill();
     ofDrawRectRounded(0, height - (height*vNorm), width, height*vNorm, 3.0);
 }
