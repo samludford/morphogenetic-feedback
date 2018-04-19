@@ -9,6 +9,8 @@
 
 #include "ofMain.h"
 #include "HUDComponent.h"
+#include "HUDBar.h"
+#include "HUDGraph.h"
 
 class HUD {
     
@@ -19,7 +21,6 @@ public:
     
 protected:
     
-    vector<HUDComponent> components;
-    
+    vector<HUDComponent*> components;
     
 };

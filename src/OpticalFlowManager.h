@@ -8,6 +8,7 @@
 #pragma once
 #include "ofMain.h"
 #include "ofxOpenCv.h"
+#include "ofxMaxim.h"
 
 using namespace cv;
 

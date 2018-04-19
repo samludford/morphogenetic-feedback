@@ -19,6 +19,8 @@
 		22ACEC4820878E1300C54818 /* HUDComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22ACEC4620878E1300C54818 /* HUDComponent.cpp */; };
 		22F21CE3B902225374BA1CA2 /* maximilian.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 87D3A0051CCB2C0F0ECA139E /* maximilian.cpp */; };
 		22FFA4E92087932900021F10 /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA4E72087932900021F10 /* HUD.cpp */; };
+		22FFA4EC2088BA6D00021F10 /* HUDBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA4EA2088BA6D00021F10 /* HUDBar.cpp */; };
+		22FFA4EF2088C91600021F10 /* HUDGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FFA4ED2088C91600021F10 /* HUDGraph.cpp */; };
 		250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9C7160245B19131DAE6128 /* ofxCvColorImage.cpp */; };
 		255A7B680DC81E543C875794 /* usb_libusb10.c in Sources */ = {isa = PBXBuildFile; fileRef = 28F9707464BA3FF98E05096C /* usb_libusb10.c */; };
 		49BEEB2DFA5319D55AA6899F /* tilt.c in Sources */ = {isa = PBXBuildFile; fileRef = BF2F2AA872288D30F53983EF /* tilt.c */; };
@@ -111,6 +113,10 @@
 		22ACEC4720878E1300C54818 /* HUDComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDComponent.h; sourceTree = "<group>"; };
 		22FFA4E72087932900021F10 /* HUD.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
 		22FFA4E82087932900021F10 /* HUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
+		22FFA4EA2088BA6D00021F10 /* HUDBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUDBar.cpp; sourceTree = "<group>"; };
+		22FFA4EB2088BA6D00021F10 /* HUDBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDBar.h; sourceTree = "<group>"; };
+		22FFA4ED2088C91600021F10 /* HUDGraph.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUDGraph.cpp; sourceTree = "<group>"; };
+		22FFA4EE2088C91600021F10 /* HUDGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HUDGraph.h; sourceTree = "<group>"; };
 		2411F6B35DAAAE5083D51167 /* motion_estimators.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = motion_estimators.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/stitching/detail/motion_estimators.hpp; sourceTree = SOURCE_ROOT; };
 		241AAF7769D555E4ECD57E17 /* cameras.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = cameras.h; path = ../../../addons/ofxKinect/libs/libfreenect/src/cameras.h; sourceTree = SOURCE_ROOT; };
 		26E4EEE253C8A6EFC3B3A639 /* warpers.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = warpers.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/stitching/detail/warpers.hpp; sourceTree = SOURCE_ROOT; };
@@ -911,6 +917,10 @@
 				22ACEC4720878E1300C54818 /* HUDComponent.h */,
 				22FFA4E72087932900021F10 /* HUD.cpp */,
 				22FFA4E82087932900021F10 /* HUD.h */,
+				22FFA4EA2088BA6D00021F10 /* HUDBar.cpp */,
+				22FFA4EB2088BA6D00021F10 /* HUDBar.h */,
+				22FFA4ED2088C91600021F10 /* HUDGraph.cpp */,
+				22FFA4EE2088C91600021F10 /* HUDGraph.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1076,6 +1086,7 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				7ADB04AF67C568EAFAEBA546 /* ofxKinectExtras.cpp in Sources */,
 				686B0DF6249B52E1A85B39EC /* ofxKinect.cpp in Sources */,
+				22FFA4EF2088C91600021F10 /* HUDGraph.cpp in Sources */,
 				0F8F016776681D468C0D0949 /* audio.c in Sources */,
 				ACE7DC9A3223ED5EE1B80074 /* cameras.c in Sources */,
 				F4135EEFC911E9ED211FB6F9 /* core.c in Sources */,
@@ -1089,6 +1100,7 @@
 				22ACEC452087591700C54818 /* OpticalFlowManager.cpp in Sources */,
 				0FCED26D40D46CF89A58E54C /* fft.cpp in Sources */,
 				5C4A4AA5D4784DF23EA43038 /* maxiAtoms.cpp in Sources */,
+				22FFA4EC2088BA6D00021F10 /* HUDBar.cpp in Sources */,
 				ABA8875AF0C06690CC0B92B1 /* maxiBark.cpp in Sources */,
 				96084990AF216648B8B98E00 /* maxiFFT.cpp in Sources */,
 				AF0580829426DC6BCA135A5C /* maxiGrains.cpp in Sources */,

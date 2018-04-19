@@ -27,8 +27,9 @@ protected:
     bool bSetupArduino;
     void setupArduino(const int & version);
     bool motorState;
-    
     int magnetPins[NUM_MAGNETS];
+    
+    // Maximilian
     maxiClock clocks[NUM_MAGNETS];
     int counters[NUM_MAGNETS];
     
