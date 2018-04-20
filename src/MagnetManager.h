@@ -11,6 +11,8 @@
 
 #define ARDUINO_UNO_TTY "tty.usbmodem1411"
 #define NUM_MAGNETS 4
+#define TEMPO_LIMIT_LOWER 30
+#define TEMPO_LIMIT_UPPER 120
 
 class MagnetManager {
     
@@ -19,6 +21,7 @@ public:
     MagnetManager();
     void audioLoop();
     void update();
+    void incrementValues(float *values);
     
 protected:
     
@@ -30,7 +33,10 @@ protected:
     int magnetPins[NUM_MAGNETS];
     
     // Maximilian
+    float tempos[NUM_MAGNETS];
     maxiClock clocks[NUM_MAGNETS];
     int counters[NUM_MAGNETS];
+    
+    void incrementTempo(int index, float increment);
     
 };

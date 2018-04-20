@@ -17,7 +17,7 @@ OpticalFlowManager::OpticalFlowManager() {
 void OpticalFlowManager::calculate(ofPixels & pixels) {
     computeVectors(pixels);
     analyseVectors();
-    processForDisplay();
+//    processForDisplay();
 }
 
 //--------------------------------------------------------------

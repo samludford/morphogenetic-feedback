@@ -21,7 +21,7 @@ void ofApp::setup(){
     opticalFlowManager = new OpticalFlowManager();
     
     // setup output manager
-//    magnetManager = new MagnetManager();
+    magnetManager = new MagnetManager();
     
     // setup hud
     hud = new HUD();
@@ -42,7 +42,7 @@ void ofApp::update(){
         opticalFlowManager->calculate(pixels);
     }
     
-//    magnetManager->update();
+    magnetManager->update();
 }
 
 //--------------------------------------------------------------
@@ -56,19 +56,22 @@ void ofApp::draw(){
                         opticalFlowManager->rightMotion,
                         opticalFlowManager->upMotion,
                         opticalFlowManager->downMotion };
-        
+    
+    magnetManager->incrementValues(values);
     hud->draw(values);
     
+    // draw video
     if(opticalFlowManager->bufferFloat.bAllocated) {
         opticalFlowManager->bufferFloat.draw( 10, 10, 380, 380 );
     }
-    
+
 }
 
 //--------------------------------------------------------------
 void ofApp::audioOut(float * output, int bufferSize, int nChannels) {
     for (int i = 0; i < bufferSize; i++){
-//        magnetManager->audioLoop();
+        magnetManager->audioLoop();
     }
 }
+
 
