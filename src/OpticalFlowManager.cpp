@@ -17,7 +17,7 @@ OpticalFlowManager::OpticalFlowManager() {
 void OpticalFlowManager::calculate(ofPixels & pixels) {
     computeVectors(pixels);
     analyseVectors();
-//    processForDisplay();
+    processForDisplay();
 }
 
 //--------------------------------------------------------------
@@ -66,7 +66,7 @@ void OpticalFlowManager::analyseVectors() {
         int h = gray1.height;
         float *flowXPixels = flowX.getPixelsAsFloats();
         float *flowYPixels = flowY.getPixelsAsFloats();
-        ofSetColor( 0, 0, 255 );
+//        ofSetColor( 0, 0, 255 );
         for (int y=0; y<h; y+=5) {
             for (int x=0; x<w; x+=5) {
                 
@@ -91,8 +91,6 @@ void OpticalFlowManager::analyseVectors() {
                 } else {
                     upMotion += fabs ( fy );
                 }
-                
-//                cout << "total: " << motion << " l: " << leftMotion << " r: " << rightMotion << " u: " << upMotion << " d: " << downMotion << endl;
 
             }
         }

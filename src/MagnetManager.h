@@ -6,6 +6,7 @@
 //
 
 #pragma once
+
 #include "ofMain.h"
 #include "ofxMaxim.h"
 

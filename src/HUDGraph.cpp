@@ -22,8 +22,8 @@ void HUDGraph::drawHUD(float values[]) {
     }
     
     // draw axis
-    ofDrawLine(0, 10, 0, height - 10);
-    ofDrawLine(0, height - 10, width, height - 10);
+    ofDrawLine(0, 0, 0, height);
+    ofDrawLine(0, height, width, height);
     
     // draw lines
     for(int i = 0 ; i < 5 ; i++) {
@@ -42,6 +42,11 @@ void HUDGraph::drawHUD(float values[]) {
         }
         graphLine.draw();
     }
+    
+    ofPushStyle();
+    ofSetColor(255,0,0);
+//    ofDrawRectangle(0, 0, width, height);
+    ofPopStyle();
 
 }
 

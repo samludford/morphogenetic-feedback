@@ -72,7 +72,7 @@ void MagnetManager::audioLoop() {
 //--------------------------------------------------------------
 void MagnetManager::update() {
 //    ard.update();
-    cout << "t1: " << tempos[0] << " t2: " << tempos[1] << " t3: " << tempos[2] << "t4: " << tempos[3] << endl;
+//    cout << "t1: " << tempos[0] << " t2: " << tempos[1] << " t3: " << tempos[2] << "t4: " << tempos[3] << endl;
 }
 
 //--------------------------------------------------------------

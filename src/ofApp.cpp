@@ -4,10 +4,11 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-	ofBackground(125);
+    ofBackground(0);
     
     // ps3EyeSetup
     video.setDesiredFrameRate(60);
+//    video.setDeviceID(0);
     video.setGrabber(std::make_shared<ofxPS3EyeGrabber>());
     video.initGrabber(480, 480);
     
@@ -43,13 +44,11 @@ void ofApp::update(){
     }
     
     magnetManager->update();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    
-    ofBackground(0);
-    ofSetColor(255);
     
     float values[] = {  opticalFlowManager->motion,
                         opticalFlowManager->leftMotion,
@@ -62,7 +61,7 @@ void ofApp::draw(){
     
     // draw video
     if(opticalFlowManager->bufferFloat.bAllocated) {
-        opticalFlowManager->bufferFloat.draw( 10, 10, 380, 380 );
+        opticalFlowManager->bufferFloat.draw( 160.0 + 1.0, 246.667 + 1.0, 586.667 - 2.0, 586.667 - 2.0);
     }
 
 }

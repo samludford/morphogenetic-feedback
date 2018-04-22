@@ -23,5 +23,9 @@ public:
 protected:
     
     vector<HUDComponent*> components;
+    void drawFrame();
+    float innerMargin { 80.0 };
+    float outerMargin { 40.0 };
+    float panelWidth;
     
 };
