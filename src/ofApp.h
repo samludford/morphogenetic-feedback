@@ -18,24 +18,19 @@ public:
     // video input
     ofVideoGrabber video;
     
-    
-    // ofxMaxim
+    // ofxMaxim (used in the MagnetManager for handling the timing of pulse patterns)
     void audioOut(float * output, int bufferSize, int nChannels);
     int  bufferSize;
     int  sampleRate;
     
-    // magnet manager
+    // magnet manager (class handling communication with the arduino)
     MagnetManager *magnetManager;
     
-    // optical flow analysis
+    // optical flow manager (class handling CV related tasks)
     OpticalFlowManager *opticalFlowManager;
     
-    // HUD
+    // HUD (class for handling the graphical component displayed on the LG Monitor)
     HUD *hud;
-    
-    // image for display
-    ofxCvColorImage image;        //The current video frame
-    ofxCvGrayscaleImage grayImage, grayImagePrev;
 
     
 };

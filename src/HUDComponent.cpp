@@ -7,6 +7,8 @@
 
 #include "HUDComponent.h"
 
+// abstract class which data-driven HUD components extend from
+
 //--------------------------------------------------------------
 HUDComponent::HUDComponent(float _x, float _y, float _width, float _height) {
     x = _x;
@@ -27,6 +29,6 @@ void HUDComponent::draw(float values[]) {
 
 //--------------------------------------------------------------
 void HUDComponent::drawHUD(float values[]) {
-    // override in subclass
+    // this should be overriden in the subclass to perform custom drawing
 }
 

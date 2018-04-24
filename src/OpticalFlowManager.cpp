@@ -7,6 +7,13 @@
 
 #include "OpticalFlowManager.h"
 
+/*
+Code in this class adapted from the Workshops In Creative Coding frameDifferencing (week 12) and
+opticalFlow (week 13) exmaples. Optical flow is used to extract data from the video feed, frameDifferencing for displaying the video
+feed in a manner that emphasises motion and coheres with the aesthetics of other graphical elements.
+ 
+*/
+
 //--------------------------------------------------------------
 OpticalFlowManager::OpticalFlowManager() {
     
@@ -22,6 +29,7 @@ void OpticalFlowManager::calculate(ofPixels & pixels) {
 
 //--------------------------------------------------------------
 void OpticalFlowManager::computeVectors(ofPixels & pixels) {
+    
     if ( gray1.bAllocated ) {
         gray2 = gray1;
         calculatedFlow = true;
@@ -61,12 +69,14 @@ void OpticalFlowManager::analyseVectors() {
     
         if(!calculatedFlow) return;
     
-        // analysis e.g.
         int w = gray1.width;
         int h = gray1.height;
         float *flowXPixels = flowX.getPixelsAsFloats();
         float *flowYPixels = flowY.getPixelsAsFloats();
-//        ofSetColor( 0, 0, 255 );
+    
+        // loops through the stored vectors and takes a running total of
+        // the motion, as well as its vertical and horizontal components
+    
         for (int y=0; y<h; y+=5) {
             for (int x=0; x<w; x+=5) {
                 
@@ -98,6 +108,10 @@ void OpticalFlowManager::analyseVectors() {
 
 //--------------------------------------------------------------
 void OpticalFlowManager::processForDisplay() {
+    
+    // uses standard frame differencing to get an
+    // accumulation buffer to display the image
+    
     if ( gray2.bAllocated ) {
         // frame differing for display
         diff.absDiff( gray1, gray2 );

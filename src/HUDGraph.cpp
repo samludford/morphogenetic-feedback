@@ -9,13 +9,13 @@
 
 //--------------------------------------------------------------
 HUDGraph::HUDGraph(float _x, float _y, float _width, float _height) : HUDComponent(_x, _y, _width, _height) {
-    valueHistory.resize(5);
+    valueHistory.resize(5); // deque stored the last 5 sets of values
 }
 
 //--------------------------------------------------------------
 void HUDGraph::drawHUD(float values[]) {
     
-    // update history deques
+    // update history deques (for scrolling motion)
     for(int i=0 ; i < 5 ; i++) {
         valueHistory[i].push_front(values[i]);
         if(valueHistory[i].size() > buffer_size) valueHistory[i].pop_back();
@@ -25,7 +25,7 @@ void HUDGraph::drawHUD(float values[]) {
     ofDrawLine(0, 0, 0, height);
     ofDrawLine(0, height, width, height);
     
-    // draw lines
+    // for each value, draw a curve linking the values in its current history
     for(int i = 0 ; i < 5 ; i++) {
         ofPolyline graphLine;
         float delta_x = width / (float) (buffer_size-1);
@@ -42,11 +42,6 @@ void HUDGraph::drawHUD(float values[]) {
         }
         graphLine.draw();
     }
-    
-    ofPushStyle();
-    ofSetColor(255,0,0);
-//    ofDrawRectangle(0, 0, width, height);
-    ofPopStyle();
 
 }
 

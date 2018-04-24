@@ -14,7 +14,9 @@ HUDBar::HUDBar(float _x, float _y, float _width, float _height, int _value) : HU
 
 //--------------------------------------------------------------
 void HUDBar::drawHUD(float values[]) {
-    // draw rectangle
+    
+    // uses two rectangles to create a fader-like component displaying the speciified value
+    
     ofSetColor(SHADE_TOP);
     int v = values[value];
     ofNoFill();

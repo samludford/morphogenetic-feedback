@@ -15,6 +15,9 @@ HUDWheel::HUDWheel(float _x, float _y, float _width, float _height) : HUDCompone
 //--------------------------------------------------------------
 void HUDWheel::drawHUD(float values[]) {
     
+    // creates a wheel based on games HUD-style graphics
+    // some animation is fixed, some is driven by input values
+    
     motionVals.push_front(values[0]);
     if(motionVals.size() > 100) {
         motionVals.pop_back();

@@ -14,7 +14,9 @@
 HUD::HUD() {
     
     
-    // setup HUD
+    // initialise the HUD components
+    // values are optimised for (but not dependent on) the dimensions of
+    // the LG widescreen monitor intended for installation
     
     panelWidth = (ofGetWidth() - outerMargin*2.0) / 3.0;
     float panelOffset = outerMargin + panelWidth;
@@ -24,7 +26,6 @@ HUD::HUD() {
     float barWidth = (panelWidth - 2.0*innerMargin - 4.0*barSpacing) * 0.2;
     float graphWidth = panelWidth - 2.0 * innerMargin;
     float barY = outerMargin + innerMargin;
-
 
     HUDBar *motionBar = new HUDBar(panelOffset + innerMargin, barY, barWidth, barHeight, 0);
     components.push_back(motionBar);
@@ -57,8 +58,10 @@ HUD::HUD() {
 //--------------------------------------------------------------
 void HUD::draw(float values[]) {
     
+    // draw the static HUD components
     drawFrame();
-    
+
+    // draw the dynamic HUD components
     for(int i=0 ; i < components.size() ; i++) {
         components[i]->draw(values);
     }
@@ -73,7 +76,7 @@ void HUD::drawFrame() {
     
     ofNoFill();
     
-    // two lines
+    
     float section = (ofGetWidth() - outerMargin*2.0) / 3.0;
     float x1 = outerMargin + section;
     float x2 = outerMargin + 2.0 * section;
@@ -81,10 +84,13 @@ void HUD::drawFrame() {
     float rWidth =  panelWidth - innerMargin*2.0;
     ofFill();
     float padding = 40.0;
+    
+    // frame for video feed
     ofDrawRectangle(outerMargin + innerMargin + padding, ofGetHeight()*0.5 - (rWidth-padding*2.0)*0.5, rWidth-padding*2.0, rWidth-padding*2.0);
     
     float cLength = 20.0;
-
+    
+    // draw the corners used to frame the video feed and HUDWheel
     ofDrawLine(outerMargin + innerMargin, outerMargin + innerMargin, outerMargin + innerMargin + cLength, outerMargin + innerMargin);
     ofDrawLine(outerMargin + innerMargin, outerMargin + innerMargin, outerMargin + innerMargin, outerMargin + innerMargin + cLength);
     

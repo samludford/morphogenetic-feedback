@@ -7,15 +7,21 @@
 
 #include "MagnetManager.h"
 
+/*
+ Code used for communicating with the Arduino in this class follows the openFrameworks Firmata example:
+ https://github.com/openframeworks/openFrameworks/tree/master/examples/communication/firmataExample
+*/
+
 
 //--------------------------------------------------------------
 MagnetManager::MagnetManager() {
     
-    // arduino
-//    ard.connect(ARDUINO_UNO_TTY, 57600);
-//    ofAddListener(ard.EInitialized, this, &MagnetManager::setupArduino);
-//    bSetupArduino    = false;
+    // establish connection with arduino (via Firmata)
+    ard.connect(ARDUINO_UNO_TTY, 57600);
+    ofAddListener(ard.EInitialized, this, &MagnetManager::setupArduino);    // setupArduino called once connection made
+    bSetupArduino    = false;
     
+    // initialise the clocks, counters, magnet pin numbers,
     for(int i=0 ; i < NUM_MAGNETS ; i++) {
         magnetPins[i] = i + 4;
         tempos[i] = 60.0;
@@ -29,9 +35,8 @@ MagnetManager::MagnetManager() {
 
 //--------------------------------------------------------------
 void MagnetManager::incrementValues(float *values) {
-    // if total motion increases too much,
     
-    //values go between -1 and 1
+    // use received values to adjust the pulse tempos of the magnets
     float leftMotion = values[1];
     float rightMotion = values[2];
     float upMotion = values[3];
@@ -52,16 +57,20 @@ void MagnetManager::incrementValues(float *values) {
 void MagnetManager::audioLoop() {
     
     // don't do anything until arduino setup complete
-//    if( !bSetupArduino ) return;
+    if( !bSetupArduino ) return;
     
     for(int i=0 ; i < NUM_MAGNETS ; i++) {
+        
+        
+        // if clock for current magnet is on the beat, turn it on.
+        // magnet stays on for one sixteenth beat
         clocks[i].ticker();
         if(clocks[i].tick) {
             int c = counters[i] % 4;
             if(c==0){
-//                ard.sendDigital(magnetPins[i], ARD_HIGH);
+                ard.sendDigital(magnetPins[i], ARD_HIGH);
             } else if(c==1) {
-//                ard.sendDigital(magnetPins[i], ARD_LOW);
+                ard.sendDigital(magnetPins[i], ARD_LOW);
             }
             counters[i]++;
         }
@@ -71,12 +80,13 @@ void MagnetManager::audioLoop() {
 
 //--------------------------------------------------------------
 void MagnetManager::update() {
-//    ard.update();
-//    cout << "t1: " << tempos[0] << " t2: " << tempos[1] << " t3: " << tempos[2] << "t4: " << tempos[3] << endl;
+    ard.update();
 }
 
 //--------------------------------------------------------------
 void MagnetManager::setupArduino(const int & version) {
+    
+    // uses tutorial :
     
     // remove listener because we don't need it anymore
     ofRemoveListener(ard.EInitialized, this, &MagnetManager::setupArduino);
@@ -97,10 +107,12 @@ void MagnetManager::setupArduino(const int & version) {
 //--------------------------------------------------------------
 void MagnetManager::incrementTempo(int index, float increment) {
     
+    // increment tempos - if outside limits, loop round to opposite bound
+    
     tempos[index] += increment;
     
     if(tempos[index] > TEMPO_LIMIT_UPPER) tempos[index] = TEMPO_LIMIT_LOWER;
-    if(tempos[index] < TEMPO_LIMIT_LOWER) tempos[index] = TEMPO_LIMIT_LOWER;
+    if(tempos[index] < TEMPO_LIMIT_LOWER) tempos[index] = TEMPO_LIMIT_UPPER;
     
     clocks[index].setTempo(tempos[index]);
 }
